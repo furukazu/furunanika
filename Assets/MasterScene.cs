@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
 public class MasterScene : MonoBehaviour {
 
 	public GameObject SingleCharPrefab;
+
+	public Text ScoreText;
 
 	private Dictionary<KeyCode,string> allKeys;
 
@@ -14,7 +17,7 @@ public class MasterScene : MonoBehaviour {
 		allKeys[KeyCode.A] = "A";
 		allKeys[KeyCode.B] = "B";
 		allKeys[KeyCode.C] = "C";
-		allKeys[KeyCode.D] = "C";
+		allKeys[KeyCode.D] = "D";
 		allKeys[KeyCode.E] = "E";
 		allKeys[KeyCode.F] = "F";
 		allKeys[KeyCode.G] = "G";
@@ -38,6 +41,7 @@ public class MasterScene : MonoBehaviour {
 		allKeys[KeyCode.Y] = "Y";
 		allKeys[KeyCode.Z] = "Z";
 
+		score = 0;
 	}
 
 	// Use this for initialization
@@ -45,6 +49,7 @@ public class MasterScene : MonoBehaviour {
 	
 	}
 
+	private int score;
 
 
 	// Update is called once per frame
@@ -59,6 +64,9 @@ public class MasterScene : MonoBehaviour {
 		}
 
 
+		++score;
+
+		ScoreText.text = string.Format("Score: {0}",score);
 
 	}
 }

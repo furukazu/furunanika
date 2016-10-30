@@ -8,7 +8,8 @@ public class SingleChara : MonoBehaviour {
 	private Vector3 speed;
 
 	void Awake(){
-		speed = Quaternion.Euler(0,0,Random.value*360) * (Vector3.up/64.0f);
+		var vel = Random.value * 8.0f + 1.0f;
+		speed = Quaternion.Euler(0,0,Random.value*360) * (vel*(Vector3.up/128.0f)) ;
 		print(speed);
 	}
 
