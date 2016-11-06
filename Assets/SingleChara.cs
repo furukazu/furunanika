@@ -35,4 +35,10 @@ public class SingleChara : MonoBehaviour {
 	{
 		Target.text = a;
 	}
+
+	public void SetText (char c)
+	{
+		Target.text = c.ToString();
+	}
+
 }

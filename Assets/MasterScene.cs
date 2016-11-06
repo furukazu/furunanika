@@ -11,6 +11,8 @@ public class MasterScene : MonoBehaviour {
 
 	private Dictionary<KeyCode,string> allKeys;
 
+	private string HiraDic = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんゐゑ";
+
 	void Awake(){
 		allKeys = new Dictionary<KeyCode, string>();
 
@@ -63,6 +65,27 @@ public class MasterScene : MonoBehaviour {
 			}
 		}
 
+		if(Input.anyKeyDown){
+			if(Input.GetMouseButtonDown(0)){
+				var newChar = GameObject.Instantiate(SingleCharPrefab);
+				var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				pos.z = 0;
+				newChar.transform.position = pos;
+				newChar.GetComponent<SingleChara>().SetText(HiraDic[Random.Range(0,HiraDic.Length-1)]);
+			}
+		}
+
+		if(Input.touchCount > 0 ){
+			foreach(var t in Input.touches){
+				if(t.phase == TouchPhase.Began){
+					var newChar = GameObject.Instantiate(SingleCharPrefab);
+					var pos = Camera.main.ScreenToWorldPoint(t.position);
+					pos.z = 0;
+					newChar.transform.position = pos;
+					newChar.GetComponent<SingleChara>().SetText(HiraDic[Random.Range(0,HiraDic.Length-1)]);
+				}
+			}
+		}
 
 		++score;
 
