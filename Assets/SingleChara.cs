@@ -3,6 +3,15 @@ using System.Collections;
 
 public class SingleChara : MonoBehaviour {
 
+	private MasterScene theScene;
+
+	public PooledObject ThisPooled;
+
+	public void SetScene (MasterScene s)
+	{
+		theScene = s;
+	}
+
 	public TextMesh Target;
 
 	private Vector3 speed;
@@ -22,7 +31,7 @@ public class SingleChara : MonoBehaviour {
 	void Update () {
 		var vp = Camera.main.WorldToViewportPoint(this.transform.position);
 		if(vp.x<0 || vp.y<0 || vp.x>1 || vp.y > 1){
-			Destroy(this.gameObject);
+			theScene.ThePool.Pool(ThisPooled);
 			return;
 		}
 	}

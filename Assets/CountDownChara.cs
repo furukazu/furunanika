@@ -3,8 +3,14 @@ using System.Collections;
 
 public class CountDownChara : MonoBehaviour {
 
+	public void SetScene (MasterScene masterScene)
+	{
+		theScene = masterScene;
+	}
+
 	public GameObject SingleCharPrefab;
 
+	private MasterScene theScene;
 
 	public TextMesh Target;
 
@@ -32,11 +38,13 @@ public class CountDownChara : MonoBehaviour {
 		}else if(left<0){
 			Destroy(this.gameObject);
 			for(var i = 0 ; i<10;++i){
-				var newChar = GameObject.Instantiate(SingleCharPrefab);
+				var newChar = theScene.ThePool.Recycle("SingleCharPrefab",SingleCharPrefab);
 				var pos = this.transform.position;
 				pos.z = 0;
 				newChar.transform.position = pos;
-				newChar.GetComponent<SingleChara>().SetText("A");
+				var sc = newChar.GetComponent<SingleChara>();
+				sc.SetScene(theScene);
+				sc.SetText("A");
 			}
 		}
 	}

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class MasterScene : MonoBehaviour {
 
+	public ObjectPool ThePool;
+
 	public GameObject SingleCharPrefab;
 
 	public GameObject CountDownCharaPrefab;
@@ -60,6 +62,7 @@ public class MasterScene : MonoBehaviour {
 		var newChar = GameObject.Instantiate(CountDownCharaPrefab);
 		pos.z = 0;
 		newChar.transform.position = pos;
+		newChar.GetComponent<CountDownChara>().SetScene(this);
 	}
 
 	// Update is called once per frame
