@@ -68,6 +68,7 @@ public class MasterScene : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+        /*
 		foreach(var kv in allKeys){
 			if(Input.GetKeyDown(kv.Key)){
 				var newChar = GameObject.Instantiate(SingleCharPrefab);
@@ -75,6 +76,7 @@ public class MasterScene : MonoBehaviour {
 				newChar.GetComponent<SingleChara>().SetText(kv.Value);
 			}
 		}
+        */
 
 		if(Input.anyKeyDown){
 			if(Input.GetMouseButtonDown(0)){
