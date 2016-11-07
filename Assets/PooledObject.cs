@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class PooledObject : MonoBehaviour {
 
@@ -27,5 +27,30 @@ public class PooledObject : MonoBehaviour {
 	public void WillBeRecycled ()
 	{
 		ObjectWillBeRecycled.Invoke();
+	}
+}
+
+public class CrossList<T> {
+
+	private List<T> entries;
+
+	public CrossList(){
+		entries = new List<T>();
+	}
+
+	public void Add(T entry){}
+
+	public void Remove(T entry){}
+
+	public void ForEachCross(System.Func<T,T,bool> f){
+		for(var a=0;a<entries.Count;++a){
+			for(var b=a+1;b<entries.Count;++b){
+				var res = f(entries[a],entries[b]);
+				if(res){
+					goto nextA;
+				}
+			}
+			nextA:;
+		}
 	}
 }

@@ -5,6 +5,18 @@ using System.Collections.Generic;
 
 public class MasterScene : MonoBehaviour {
 
+	private HashSet<SingleChara> singleCharas;
+
+	public void AddSingleChara (SingleChara singleChara)
+	{
+		singleCharas.Add(singleChara);
+	}
+
+	public void RemoveSingleChara (SingleChara singleChara)
+	{
+		singleCharas.Remove(singleChara);
+	}
+
 	public ObjectPool ThePool;
 
 	public GameObject SingleCharPrefab;
@@ -18,6 +30,9 @@ public class MasterScene : MonoBehaviour {
 	private string HiraDic = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんゐゑ";
 
 	void Awake(){
+
+		singleCharas = new HashSet<SingleChara>();
+
 		allKeys = new Dictionary<KeyCode, string>();
 
 		allKeys[KeyCode.A] = "A";
@@ -68,6 +83,7 @@ public class MasterScene : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+
         /*
 		foreach(var kv in allKeys){
 			if(Input.GetKeyDown(kv.Key)){

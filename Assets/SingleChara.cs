@@ -7,6 +7,8 @@ public class SingleChara : MonoBehaviour {
 
 	public PooledObject ThisPooled;
 
+	public Collider2D ThisCollider;
+
 	public void SetScene (MasterScene s)
 	{
 		theScene = s;
@@ -16,15 +18,24 @@ public class SingleChara : MonoBehaviour {
 
 	private Vector3 speed;
 
+	public void Created(){
+		theScene.AddSingleChara(this);
+	}
+
+	public void Removed(){
+		theScene.RemoveSingleChara(this);
+	}
+
 	void Awake(){
 		var vel = Random.value * 8.0f + 1.0f;
 		speed = Quaternion.Euler(0,0,Random.value*360) * (vel*(Vector3.up/128.0f)) ;
-		print(speed);
+		//print(speed);
 	}
+
+
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -34,6 +45,7 @@ public class SingleChara : MonoBehaviour {
 			theScene.ThePool.Pool(ThisPooled);
 			return;
 		}
+
 	}
 
 	void FixedUpdate(){
