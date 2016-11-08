@@ -38,9 +38,13 @@ public class CrossList<T> {
 		entries = new List<T>();
 	}
 
-	public void Add(T entry){}
+	public void Add(T entry){
+		entries.Add(entry);
+	}
 
-	public void Remove(T entry){}
+	public void Remove(T entry){
+		entries.Remove(entry);
+	}
 
 	public void ForEachCross(System.Func<T,T,bool> f){
 		for(var a=0;a<entries.Count;++a){

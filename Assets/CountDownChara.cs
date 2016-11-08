@@ -45,6 +45,7 @@ public class CountDownChara : MonoBehaviour {
 				var sc = newChar.GetComponent<SingleChara>();
 				sc.SetScene(theScene);
 				sc.SetText("A");
+				theScene.AddSingleChara(sc);
 			}
 		}
 	}

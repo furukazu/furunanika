@@ -5,16 +5,20 @@ using System.Collections.Generic;
 
 public class MasterScene : MonoBehaviour {
 
+	private CrossList<SingleChara> allSingles;
+
 	private HashSet<SingleChara> singleCharas;
 
 	public void AddSingleChara (SingleChara singleChara)
 	{
-		singleCharas.Add(singleChara);
+		allSingles.Add(singleChara);
+		//singleCharas.Add(singleChara);
 	}
 
 	public void RemoveSingleChara (SingleChara singleChara)
 	{
-		singleCharas.Remove(singleChara);
+		//singleCharas.Remove(singleChara);
+		allSingles.Remove(singleChara);
 	}
 
 	public ObjectPool ThePool;
@@ -32,6 +36,7 @@ public class MasterScene : MonoBehaviour {
 	void Awake(){
 
 		singleCharas = new HashSet<SingleChara>();
+		allSingles = new CrossList<SingleChara>();
 
 		allKeys = new Dictionary<KeyCode, string>();
 
@@ -83,6 +88,10 @@ public class MasterScene : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+		allSingles.ForEachCross( (a,b) =>{
+			print(a.ThisCollider.bounds.Intersects(b.ThisCollider.bounds) );
+			return false;
+		});
 
         /*
 		foreach(var kv in allKeys){

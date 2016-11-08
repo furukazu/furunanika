@@ -39,7 +39,9 @@ public class ObjectPool : MonoBehaviour {
 
 		if(pool[id].Count == 0){
 			var tmp = GameObject.Instantiate(prefab);
-			tmp.GetComponent<PooledObject>().PooledObjectId = id;
+			var p = tmp.GetComponent<PooledObject>();
+			p.PooledObjectId = id;
+
 			return tmp;
 		}
 

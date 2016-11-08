@@ -19,7 +19,7 @@ public class SingleChara : MonoBehaviour {
 	private Vector3 speed;
 
 	public void Created(){
-		theScene.AddSingleChara(this);
+		//theScene.AddSingleChara(this);
 	}
 
 	public void Removed(){
